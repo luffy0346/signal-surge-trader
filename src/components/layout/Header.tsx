@@ -25,7 +25,7 @@ const Header = () => {
   }, [scrolled]);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
+    { name: 'Home', href: '#hero' },
     { name: 'About', href: '#' },
     { name: 'How it works', href: '#' },
     { name: 'Performance', href: '#' },
@@ -59,8 +59,8 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="flex flex-col items-center ml-4">
-                <a href="#" className="text-sm text-signaledge-gray-light mb-1 hover:text-white transition-colors">
+              <div className="flex items-center ml-4">
+                <a href="#" className="text-sm text-signaledge-gray-light hover:text-white transition-colors mr-4">
                   Log In
                 </a>
                 <Button variant="primary" size="sm">
@@ -105,7 +105,7 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-            <div className="flex flex-col items-center space-y-4 mt-6 pt-6 border-t border-signaledge-gray-dark w-1/2">
+            <div className="flex items-center space-x-4 mt-6 pt-6 border-t border-signaledge-gray-dark w-1/2">
               <a 
                 href="#" 
                 className="text-signaledge-gray-light hover:text-white transition-colors"

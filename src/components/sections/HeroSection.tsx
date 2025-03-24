@@ -31,6 +31,7 @@ const HeroSection = () => {
   
   return (
     <section 
+      id="hero"
       ref={sectionRef} 
       className="min-h-screen flex flex-col justify-center items-center text-center px-6 transition-gpu duration-1000 opacity-0 translate-y-10"
       style={{
