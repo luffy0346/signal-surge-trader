@@ -58,13 +58,13 @@ const AboutSection = () => {
   }, []);
   
   return (
-    <section id="about" className="py-16 px-6" ref={sectionRef}>
+    <section id="about" className="py-10 px-6" ref={sectionRef}>
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           <span className="text-gradient">About Us</span>
         </h2>
         
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="max-w-4xl mx-auto mb-8">
           <p className="text-signaledge-gray-light text-lg mb-6 text-center">
             We are a team of elite quantitative traders, algorithmic engineers, and market structure 
             specialists with decades of experience in high-frequency and intraday trading. Our expertise 
@@ -72,7 +72,7 @@ const AboutSection = () => {
             insights that enhance execution performance across multiple asset classes.
           </p>
           
-          <div className="bg-signaledge-card bg-opacity-30 p-6 rounded-2xl border border-muted border-opacity-20 mb-10">
+          <div className="bg-signaledge-card bg-opacity-30 p-6 rounded-2xl border border-muted border-opacity-20 mb-8">
             <h3 className="text-2xl font-bold mb-4 text-center">
               Our <span className="text-gradient">Mission</span>
             </h3>
@@ -87,7 +87,7 @@ const AboutSection = () => {
           </div>
         </div>
         
-        <h3 className="text-2xl font-bold mb-6 text-center">
+        <h3 className="text-2xl font-bold mb-5 text-center">
           Our <span className="text-gradient">Technology & Edge</span>
         </h3>
         
