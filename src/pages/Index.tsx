@@ -7,6 +7,9 @@ import AboutSection from '@/components/sections/AboutSection';
 import FeaturesSection from '@/components/sections/FeaturesSection';
 import HowItWorksSection from '@/components/sections/HowItWorksSection';
 import PricingSection from '@/components/sections/PricingSection';
+import PerformanceSection from '@/components/sections/PerformanceSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import FAQSection from '@/components/sections/FAQSection';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +33,9 @@ const Index = () => {
         <FeaturesSection />
         <HowItWorksSection />
         <PricingSection />
+        <PerformanceSection />
+        <TestimonialsSection />
+        <FAQSection />
       </main>
       
       <Footer />
