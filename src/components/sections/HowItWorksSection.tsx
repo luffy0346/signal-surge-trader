@@ -2,6 +2,8 @@
 import React, { useEffect, useRef } from 'react';
 import { List, FileText, Zap, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+import { Card } from "@/components/ui/card";
 
 interface StepProps {
   number: number;
@@ -16,16 +18,20 @@ const Step = ({ number, icon, title, description, delay }: StepProps) => (
     className="step-card opacity-0 translate-y-10 transition-all duration-700 flex flex-col items-center"
     style={{ transitionDelay: `${delay}ms` }}
   >
-    <div className="mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-signaledge-lime bg-opacity-10 relative">
-      <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-signaledge-lime flex items-center justify-center text-black font-bold text-sm">
-        {number}
+    <Card className="w-full h-full p-6 glass-card hover:shadow-glow-lime transform transition-all duration-300 hover:-translate-y-2">
+      <div className="flex flex-col items-center">
+        <div className="mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-signaledge-lime bg-opacity-10 relative">
+          <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-signaledge-lime flex items-center justify-center text-black font-bold text-sm">
+            {number}
+          </div>
+          <div className="text-signaledge-lime">
+            {icon}
+          </div>
+        </div>
+        <h3 className="font-semibold text-xl mb-2 text-center">{title}</h3>
+        <p className="text-signaledge-gray-light text-center">{description}</p>
       </div>
-      <div className="text-signaledge-lime">
-        {icon}
-      </div>
-    </div>
-    <h3 className="font-semibold text-xl mb-2 text-center">{title}</h3>
-    <p className="text-signaledge-gray-light text-center">{description}</p>
+    </Card>
   </div>
 );
 
