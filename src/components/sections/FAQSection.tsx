@@ -83,7 +83,6 @@ const FAQSection = () => {
                 className="border-b border-muted last:border-0 overflow-hidden"
               >
                 <AccordionTrigger className="text-left font-medium py-4 flex hover:no-underline hover:text-signaledge-lime">
-                  <span className="text-signaledge-lime mr-2">📌</span>
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="py-4 text-signaledge-gray-light">

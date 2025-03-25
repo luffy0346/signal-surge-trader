@@ -7,13 +7,11 @@ import {
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer,
-  TooltipProps
+  ResponsiveContainer
 } from 'recharts';
-import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 
 // Sample data - in a real app, this would come from an API
 const performanceData = [
@@ -138,9 +136,9 @@ const PerformanceSection = () => {
           />
         </div>
         
-        <div className="glass-card p-6 rounded-xl mb-4 opacity-0 translate-y-10 transition-all duration-700 metric-card" style={{ transitionDelay: '600ms' }}>
+        <div className="max-w-2xl mx-auto glass-card p-6 rounded-xl mb-4 opacity-0 translate-y-10 transition-all duration-700 metric-card" style={{ transitionDelay: '600ms' }}>
           <h3 className="text-xl font-semibold mb-4 text-center">Monthly ROI Performance</h3>
-          <div className="h-[300px] w-full">
+          <div className="h-[250px] w-full">
             <ChartContainer className="h-full" config={chartConfig}>
               <AreaChart data={performanceData}>
                 <defs>
