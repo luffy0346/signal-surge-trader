@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { 
   AreaChart, 
@@ -59,12 +60,21 @@ const VideoCard = () => {
   const playVideo = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
-        videoRef.current.play();
+        videoRef.current.play().catch(error => {
+          console.error("Error playing video:", error);
+        });
       } else {
         videoRef.current.pause();
       }
     }
   };
+  
+  useEffect(() => {
+    // Preload the video
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, []);
   
   return (
     <div className="opacity-0 translate-y-10 transition-all duration-700 metric-card" 
@@ -86,6 +96,7 @@ const VideoCard = () => {
           muted
           loop
           playsInline
+          preload="auto"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-stock-trading-monitor-with-animated-charts-34557-large.mp4" type="video/mp4" />
           Your browser does not support the video tag.
