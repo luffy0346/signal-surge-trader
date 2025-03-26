@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { 
   AreaChart, 
@@ -87,7 +88,7 @@ const VideoCard = () => {
           loop
           playsInline
         >
-          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-stock-trading-monitor-with-animated-charts-34557-large.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
