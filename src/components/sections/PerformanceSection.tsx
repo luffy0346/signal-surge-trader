@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { 
   AreaChart, 
@@ -54,28 +53,47 @@ const MetricCard = ({ icon, title, value, delay }: MetricCardProps) => (
   </div>
 );
 
-const VideoCard = () => (
-  <div className="opacity-0 translate-y-10 transition-all duration-700 metric-card" 
-    style={{ transitionDelay: '700ms' }}>
-    <div className="rounded-xl overflow-hidden relative group">
-      <div className="absolute inset-0 bg-gradient-to-r from-signaledge-lime/20 to-transparent opacity-50 group-hover:opacity-70 transition-opacity z-10"></div>
-      <div className="absolute inset-0 flex items-center justify-center z-20">
-        <div className="w-16 h-16 rounded-full bg-signaledge-lime/90 flex items-center justify-center cursor-pointer group-hover:bg-signaledge-lime transition-colors">
-          <Play size={32} fill="black" className="ml-1" />
+const VideoCard = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  const playVideo = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  };
+  
+  return (
+    <div className="opacity-0 translate-y-10 transition-all duration-700 metric-card" 
+      style={{ transitionDelay: '700ms' }}>
+      <div className="rounded-xl overflow-hidden relative group">
+        <div className="absolute inset-0 bg-gradient-to-r from-signaledge-lime/20 to-transparent opacity-50 group-hover:opacity-70 transition-opacity z-10"></div>
+        <div className="absolute inset-0 flex items-center justify-center z-20">
+          <div 
+            onClick={playVideo} 
+            className="w-16 h-16 rounded-full bg-signaledge-lime/90 flex items-center justify-center cursor-pointer group-hover:bg-signaledge-lime transition-colors"
+          >
+            <Play size={32} fill="black" className="ml-1" />
+          </div>
         </div>
+        <video 
+          ref={videoRef}
+          className="rounded-xl w-full h-full object-cover" 
+          poster="/placeholder.svg" 
+          muted
+          loop
+          playsInline
+        >
+          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
-      <video 
-        className="rounded-xl w-full h-full object-cover" 
-        poster="/placeholder.svg" 
-        muted
-        loop
-      >
-        <source src="https://example.com/trading-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
     </div>
-  </div>
-);
+  );
+};
 
 const PerformanceSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
