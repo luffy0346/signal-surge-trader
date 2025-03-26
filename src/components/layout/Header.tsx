@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import Button from '../ui/Button';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,13 +26,13 @@ const Header = () => {
   }, [scrolled]);
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#' },
-    { name: 'How it works', href: '#' },
-    { name: 'Performance', href: '#' },
-    { name: 'Trading Strategies', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '#about' },
+    { name: 'How it works', href: '#how-it-works' },
+    { name: 'Performance', href: '#performance' },
+    { name: 'Trading Strategies', href: '/trading-strategies' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -46,18 +47,24 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="text-white relative z-20">
+          <Link to="/" className="text-white relative z-20">
             <span className="block leading-tight text-xl font-semibold">SignalEdge</span>
             <span className="text-sm text-signaledge-gray-light ml-1">Trading</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           {!isMobile && (
             <nav className="hidden md:flex items-center space-x-6 text-sm">
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="nav-link">
-                  {link.name}
-                </a>
+                link.href.startsWith('#') ? (
+                  <a key={link.name} href={link.href} className="nav-link">
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link key={link.name} to={link.href} className="nav-link">
+                    {link.name}
+                  </Link>
+                )
               ))}
               <div className="flex items-center ml-4">
                 <a href="#" className="text-sm text-signaledge-gray-light hover:text-white transition-colors mr-4">
@@ -96,14 +103,25 @@ const Header = () => {
         >
           <nav className="flex flex-col items-center space-y-6 text-base">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="nav-link text-lg"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
+              link.href.startsWith('#') ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="nav-link text-lg"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="nav-link text-lg"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             <div className="flex items-center space-x-4 mt-6 pt-6 border-t border-signaledge-gray-dark w-1/2">
               <a 
