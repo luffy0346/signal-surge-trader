@@ -12,6 +12,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
+import { Play } from 'lucide-react';
 
 // Sample data - in a real app, this would come from an API
 const performanceData = [
@@ -50,6 +51,29 @@ const MetricCard = ({ icon, title, value, delay }: MetricCardProps) => (
         </div>
       </CardContent>
     </Card>
+  </div>
+);
+
+const VideoCard = () => (
+  <div className="opacity-0 translate-y-10 transition-all duration-700 metric-card" 
+    style={{ transitionDelay: '700ms' }}>
+    <div className="rounded-xl overflow-hidden relative group">
+      <div className="absolute inset-0 bg-gradient-to-r from-signaledge-lime/20 to-transparent opacity-50 group-hover:opacity-70 transition-opacity z-10"></div>
+      <div className="absolute inset-0 flex items-center justify-center z-20">
+        <div className="w-16 h-16 rounded-full bg-signaledge-lime/90 flex items-center justify-center cursor-pointer group-hover:bg-signaledge-lime transition-colors">
+          <Play size={32} fill="black" className="ml-1" />
+        </div>
+      </div>
+      <video 
+        className="rounded-xl w-full h-full object-cover" 
+        poster="/placeholder.svg" 
+        muted
+        loop
+      >
+        <source src="https://example.com/trading-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 );
 
@@ -136,47 +160,51 @@ const PerformanceSection = () => {
           />
         </div>
         
-        <div className="max-w-2xl mx-auto glass-card p-6 rounded-xl mb-4 opacity-0 translate-y-10 transition-all duration-700 metric-card" style={{ transitionDelay: '600ms' }}>
-          <h3 className="text-xl font-semibold mb-4 text-center">Monthly ROI Performance</h3>
-          <div className="h-[250px] w-full">
-            <ChartContainer className="h-full" config={chartConfig}>
-              <AreaChart data={performanceData}>
-                <defs>
-                  <linearGradient id="roiGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#a3e635" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#a3e635" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-                <XAxis dataKey="month" tick={{ fill: '#9ca3af' }} />
-                <YAxis
-                  tickFormatter={(value) => `${value}%`}
-                  tick={{ fill: '#9ca3af' }}
-                  domain={[0, 5]}
-                />
-                <ChartTooltip
-                  content={({ active, payload, label }) => {
-                    if (active && payload && payload.length) {
-                      return (
-                        <div className="bg-signaledge-card p-2 border border-muted rounded-md">
-                          <p className="text-sm">{`${label}: ${payload[0].value}%`}</p>
-                        </div>
-                      );
-                    }
-                    return null;
-                  }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="roi" 
-                  stroke="#a3e635" 
-                  fillOpacity={1} 
-                  fill="url(#roiGradient)" 
-                  name="roi"
-                />
-              </AreaChart>
-            </ChartContainer>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="glass-card p-6 rounded-xl mb-4 opacity-0 translate-y-10 transition-all duration-700 metric-card" style={{ transitionDelay: '600ms' }}>
+            <h3 className="text-xl font-semibold mb-4 text-center">Monthly ROI Performance</h3>
+            <div className="h-[250px] w-full">
+              <ChartContainer className="h-full" config={chartConfig}>
+                <AreaChart data={performanceData}>
+                  <defs>
+                    <linearGradient id="roiGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#a3e635" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#a3e635" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                  <XAxis dataKey="month" tick={{ fill: '#9ca3af' }} />
+                  <YAxis
+                    tickFormatter={(value) => `${value}%`}
+                    tick={{ fill: '#9ca3af' }}
+                    domain={[0, 5]}
+                  />
+                  <ChartTooltip
+                    content={({ active, payload, label }) => {
+                      if (active && payload && payload.length) {
+                        return (
+                          <div className="bg-signaledge-card p-2 border border-muted rounded-md">
+                            <p className="text-sm">{`${label}: ${payload[0].value}%`}</p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="roi" 
+                    stroke="#a3e635" 
+                    fillOpacity={1} 
+                    fill="url(#roiGradient)" 
+                    name="roi"
+                  />
+                </AreaChart>
+              </ChartContainer>
+            </div>
           </div>
+          
+          <VideoCard />
         </div>
       </div>
     </section>

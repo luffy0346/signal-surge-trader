@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { FileText, BarChart, Clock, Users } from 'lucide-react';
 import { Button } from '@/components/ui/shadcn-button';
+import { Separator } from '@/components/ui/separator';
 
 interface Strategy {
   id: number;
@@ -240,6 +241,58 @@ const tradingStrategies: Strategy[] = [
   }
 ];
 
+const StrategyCard = ({ strategy }: { strategy: Strategy }) => (
+  <div className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-black shadow-md hover:shadow-lg transition-all duration-300">
+    <div className="flex flex-col md:flex-row">
+      <div className="w-full md:w-1/3 p-4 flex items-center justify-center">
+        <div className="w-full aspect-video bg-gray-100 dark:bg-gray-800 rounded overflow-hidden">
+          <img src={strategy.chartImage} alt={strategy.title} className="w-full h-full object-cover" />
+        </div>
+      </div>
+      
+      <div className="w-full md:w-2/3 p-6">
+        <h2 className="text-2xl font-bold mb-1">{strategy.title}</h2>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{strategy.date}</p>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">{strategy.description}</p>
+        
+        <div className="flex flex-col space-y-4">
+          <div className="flex flex-wrap gap-2">
+            <div className="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm">
+              <Clock size={14} className="mr-1" /> {strategy.frequency}
+            </div>
+            <div className="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm">
+              <Users size={14} className="mr-1" /> {strategy.assetClass}
+            </div>
+          </div>
+          
+          <div className="flex items-center">
+            <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-md mr-3">
+              <BarChart size={16} className="text-blue-500" />
+            </div>
+            <div>
+              <span className="block text-sm text-gray-500 dark:text-gray-400">Sharpe Ratio</span>
+              <span className="block font-semibold">{strategy.sharpeRatio}</span>
+            </div>
+            <div className="ml-6">
+              <span className="block text-sm text-gray-500 dark:text-gray-400">Period</span>
+              <span className="block font-semibold">{strategy.period}</span>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap gap-3">
+            <Button variant="default" className="bg-blue-600 hover:bg-blue-700">
+              <FileText size={16} className="mr-1" /> VIEW PAPER
+            </Button>
+            <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+              <BarChart size={16} className="mr-1" /> BACKTEST
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const TradingStrategies = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -255,85 +308,21 @@ const TradingStrategies = () => {
     <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Header />
       
-      <main className="bg-signaledge-background">
-        <section className="px-6 py-24">
-          <div className="section-container">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-              Trending <span className="text-gradient">Trading Strategies</span>
-            </h1>
-            <p className="text-signaledge-gray-light text-center max-w-3xl mx-auto mb-16">
-              Explore our collection of research-backed trading strategies with proven performance
-            </p>
-            
-            <div className="space-y-8">
-              {tradingStrategies.map((strategy) => (
-                <div key={strategy.id} className="glass-card p-6 rounded-xl transition-all duration-300 hover:shadow-glow-lime">
-                  <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-1/4 flex justify-center items-center">
-                      <div className="w-full max-w-[240px] aspect-[4/3] bg-signaledge-card/40 rounded-md overflow-hidden flex items-center justify-center">
-                        <img src={strategy.chartImage} alt={strategy.title} className="w-full h-full object-cover" />
-                      </div>
-                    </div>
-                    
-                    <div className="w-full md:w-3/4">
-                      <div className="flex flex-col h-full">
-                        <div>
-                          <h2 className="text-2xl font-bold mb-1">{strategy.title}</h2>
-                          <p className="text-sm text-signaledge-gray-light mb-3">{strategy.date}</p>
-                          <p className="text-signaledge-gray-light mb-4">{strategy.description}</p>
-                        </div>
-                        
-                        <div className="mt-auto">
-                          <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between">
-                            <div className="flex items-center gap-6">
-                              <div className="flex items-center gap-3">
-                                <div className="bg-signaledge-card p-2 rounded-md">
-                                  <BarChart size={16} className="text-signaledge-lime" />
-                                </div>
-                                <div>
-                                  <span className="block text-sm text-signaledge-gray-light">Sharpe Ratio</span>
-                                  <span className="block font-semibold">{strategy.sharpeRatio}</span>
-                                </div>
-                              </div>
-                              
-                              <div className="flex items-center gap-3">
-                                <div className="bg-signaledge-card p-2 rounded-md">
-                                  <Clock size={16} className="text-signaledge-lime" />
-                                </div>
-                                <div>
-                                  <span className="block text-sm text-signaledge-gray-light">Period</span>
-                                  <span className="block font-semibold">{strategy.period}</span>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div className="flex flex-wrap gap-3">
-                              <div className="flex items-center px-3 py-1 bg-signaledge-card/50 rounded-full text-sm">
-                                <Clock size={14} className="mr-1" /> {strategy.frequency}
-                              </div>
-                              <div className="flex items-center px-3 py-1 bg-signaledge-card/50 rounded-full text-sm">
-                                <Users size={14} className="mr-1" /> {strategy.assetClass}
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="flex flex-wrap gap-3 mt-4">
-                            <Button variant="default" className="bg-signaledge-lime text-signaledge-background hover:bg-signaledge-lime/90">
-                              <FileText size={16} className="mr-1" /> VIEW PAPER
-                            </Button>
-                            <Button variant="outline" className="border-signaledge-lime text-signaledge-lime hover:bg-signaledge-lime/10">
-                              <BarChart size={16} className="mr-1" /> BACKTEST
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <main className="py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Trending <span className="text-blue-600 dark:text-blue-400">Trading Strategies</span>
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mb-12">
+            Explore our collection of research-backed trading strategies with proven performance across different asset classes and time periods.
+          </p>
+          
+          <div className="space-y-8">
+            {tradingStrategies.map((strategy) => (
+              <StrategyCard key={strategy.id} strategy={strategy} />
+            ))}
           </div>
-        </section>
+        </div>
       </main>
       
       <Footer />
