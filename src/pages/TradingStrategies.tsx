@@ -165,7 +165,7 @@ const tradingStrategies: Strategy[] = [
     id: 14,
     title: "Commodity Momentum and Basis",
     date: "September 17, 2012",
-    description: "This research shows that combining futures basis and past price performance (momentum) leads to significant commodity strategy returns, finding evidence of "backwardation" as a partial explanation for commodity risk premiums.",
+    description: "This research shows that combining futures basis and past price performance (momentum) leads to significant commodity strategy returns, finding evidence of 'backwardation' as a partial explanation for commodity risk premiums.",
     sharpeRatio: 1.32,
     period: "1995 - 2022",
     frequency: "Monthly",
