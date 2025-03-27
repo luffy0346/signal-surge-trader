@@ -48,7 +48,7 @@ const PlanCard = ({
       </ul>
       <div className="mt-auto">
         <Button 
-          variant={isFeatured ? "primary" : "outline"} 
+          variant={isFeatured ? "primary" : "secondary"} 
           size="md" 
           className={isFeatured ? "w-full shadow-glow-lime" : "w-full"}
           onClick={onSubscribe}
