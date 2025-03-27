@@ -48,8 +48,11 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-white relative z-20">
-            <span className="block leading-tight text-xl font-semibold">SignalEdge</span>
-            <span className="text-sm text-signaledge-gray-light ml-1">Trading</span>
+            <img 
+              src="/lovable-uploads/9e770d44-f832-4153-b504-bbb0e8fe70cd.png" 
+              alt="SignalEdge Logo" 
+              className="h-10" 
+            />
           </Link>
 
           {/* Desktop Navigation */}

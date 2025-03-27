@@ -163,8 +163,8 @@ const TestimonialsSection = () => {
                       </div>
                       <p className="mb-4 text-signaledge-gray-light italic">"{testimonial.content}"</p>
                       <div className="mt-auto">
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-signaledge-gray-light">{testimonial.role}</p>
+                        <p className="font-semibold text-left">{testimonial.name}</p>
+                        <p className="text-sm text-signaledge-gray-light text-left">{testimonial.role}</p>
                       </div>
                     </CardContent>
                   </Card>

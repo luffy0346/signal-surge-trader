@@ -1,7 +1,8 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PlanCard from '../ui/PlanCard';
 import Button from '../ui/Button';
+import PaymentModal from '../payment/PaymentModal';
 
 interface PlanFeature {
   text: string;
@@ -53,6 +54,13 @@ const plans: Plan[] = [
 
 const PricingSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  
+  const handleSubscribe = (plan: Plan) => {
+    setSelectedPlan(plan);
+    setIsPaymentModalOpen(true);
+  };
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -82,6 +90,7 @@ const PricingSection = () => {
     <section 
       ref={sectionRef}
       className="px-6 py-24 bg-signaledge-section-alt transition-all duration-1000 opacity-0"
+      id="pricing"
     >
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
@@ -99,12 +108,18 @@ const PricingSection = () => {
               price={plan.price}
               features={plan.features}
               isFeatured={plan.isFeatured}
+              onSubscribe={() => handleSubscribe(plan)}
             />
           ))}
         </div>
         
         <div className="mt-16 text-center animate-fade-up" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
-          <Button variant="primary" size="lg" className="shadow-glow-lime">
+          <Button 
+            variant="primary" 
+            size="lg" 
+            className="shadow-glow-lime"
+            onClick={() => handleSubscribe(plans[1])} // Default to Pro plan
+          >
             Start Trading Now
           </Button>
           <p className="mt-4 text-signaledge-gray-light">
@@ -112,6 +127,15 @@ const PricingSection = () => {
           </p>
         </div>
       </div>
+      
+      {selectedPlan && (
+        <PaymentModal 
+          isOpen={isPaymentModalOpen}
+          onClose={() => setIsPaymentModalOpen(false)}
+          planTitle={selectedPlan.title}
+          planPrice={selectedPlan.price}
+        />
+      )}
     </section>
   );
 };

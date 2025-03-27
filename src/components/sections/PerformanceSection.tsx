@@ -98,7 +98,7 @@ const VideoCard = () => {
           playsInline
           preload="auto"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-stock-trading-monitor-with-animated-charts-34557-large.mp4" type="video/mp4" />
+          <source src="https://share.descript.com/view/8aW4lonVz1O" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
