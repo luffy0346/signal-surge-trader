@@ -49,9 +49,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="text-white relative z-20">
             <img 
-              src="/lovable-uploads/9e770d44-f832-4153-b504-bbb0e8fe70cd.png" 
+              src="/lovable-uploads/c295e9d7-5546-4f40-be81-20320f465fd8.png" 
               alt="SignalEdge Logo" 
-              className="h-10" 
+              className="h-14" 
             />
           </Link>
 
