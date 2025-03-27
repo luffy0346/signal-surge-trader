@@ -46,12 +46,12 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Enlarged */}
           <Link to="/" className="text-white relative z-20">
             <img 
-              src="/lovable-uploads/c295e9d7-5546-4f40-be81-20320f465fd8.png" 
+              src="/lovable-uploads/6b501152-4078-43a3-b9f3-6555c46474c2.png" 
               alt="SignalEdge Logo" 
-              className="h-14" 
+              className="h-20 md:h-24" 
             />
           </Link>
 
