@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, ArrowRight, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Bot } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface Message {
