@@ -38,15 +38,24 @@ const HeroSection = () => {
         background: 'radial-gradient(circle at 50% 50%, rgba(26, 31, 46, 0.7) 0%, rgba(10, 15, 29, 1) 100%)'
       }}
     >
-      {/* Floating Element */}
+      {/* Floating Stats Card */}
       <div className="absolute top-[20%] right-[10%] animate-combined-float z-10">
         <div className="relative">
           <div className="absolute inset-0 bg-signaledge-lime opacity-20 blur-md rounded-full"></div>
-          <div className="bg-gradient-to-br from-signaledge-lime to-green-300 p-4 rounded-xl shadow-glow-lime transform rotate-3 flex flex-col items-center">
-            <div className="font-bold text-black text-sm">Breaking News</div>
-            <div className="text-black text-xs mt-1">Real-time Signals!</div>
-            <div className="mt-2 bg-black/20 px-2 py-1 rounded text-[10px] text-black font-medium">
-              +37.8% ROI
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-5 rounded-xl shadow-glow-lime flex flex-col items-center w-[200px]">
+            <div className="w-full flex justify-between items-center mb-2">
+              <div className="font-bold text-signaledge-lime text-sm">NASDAQ</div>
+              <div className="text-green-400 text-xs font-medium">+2.4%</div>
+            </div>
+            <div className="w-full h-[2px] bg-gray-700 mb-3"></div>
+            <div className="w-full flex justify-between items-center mb-2">
+              <div className="font-bold text-signaledge-lime text-sm">EUR/USD</div>
+              <div className="text-red-400 text-xs font-medium">-0.3%</div>
+            </div>
+            <div className="w-full h-[2px] bg-gray-700 mb-3"></div>
+            <div className="w-full flex justify-between items-center">
+              <div className="font-bold text-signaledge-lime text-sm">BTC/USD</div>
+              <div className="text-green-400 text-xs font-medium">+4.7%</div>
             </div>
           </div>
         </div>
