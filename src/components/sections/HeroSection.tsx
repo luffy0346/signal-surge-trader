@@ -33,11 +33,23 @@ const HeroSection = () => {
     <section 
       id="hero"
       ref={sectionRef} 
-      className="min-h-screen flex flex-col justify-center items-center text-center px-6 transition-gpu duration-1000 opacity-0 translate-y-10"
+      className="min-h-screen flex flex-col justify-center items-center text-center px-6 transition-gpu duration-1000 opacity-0 translate-y-10 relative"
       style={{
         background: 'radial-gradient(circle at 50% 50%, rgba(26, 31, 46, 0.7) 0%, rgba(10, 15, 29, 1) 100%)'
       }}
     >
+      {/* Floating Screenshot */}
+      <div className="absolute top-[20%] right-[10%] animate-combined-float z-10">
+        <div className="relative">
+          <div className="absolute inset-0 bg-signaledge-lime opacity-20 blur-md rounded-xl"></div>
+          <img 
+            src="/lovable-uploads/5be3d1c2-6783-434c-bdde-7fe20475f9e1.png" 
+            alt="Trading dashboard screenshot" 
+            className="w-[300px] rounded-xl shadow-glow-lime border border-signaledge-lime/30"
+          />
+        </div>
+      </div>
+      
       <div className="max-w-4xl mx-auto">
         <div className="relative">
           <div className="animate-subtle-float">

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { 
   AreaChart, 
@@ -147,7 +146,7 @@ const PerformanceSection = () => {
   };
   
   return (
-    <section className="py-24 px-6 bg-signaledge-section">
+    <section id="performance" className="py-24 px-6 bg-signaledge-section">
       <div className="section-container" ref={sectionRef}>
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           Historical <span className="text-gradient">Performance</span>

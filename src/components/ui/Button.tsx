@@ -1,12 +1,14 @@
 
 import React from 'react';
 import { cn } from "@/lib/utils";
+import { Loader2 } from 'lucide-react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   className?: string;
+  loading?: boolean;
 }
 
 const Button = ({
@@ -14,6 +16,8 @@ const Button = ({
   size = 'md',
   children,
   className,
+  loading = false,
+  disabled,
   ...props
 }: ButtonProps) => {
   const baseClasses = "font-semibold rounded-2xl transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-signaledge-lime focus:ring-opacity-50 button-hover-effect";
@@ -36,11 +40,20 @@ const Button = ({
         baseClasses,
         variantClasses[variant],
         sizeClasses[size],
+        loading && "opacity-80 pointer-events-none",
         className
       )}
+      disabled={disabled || loading}
       {...props}
     >
-      {children}
+      {loading ? (
+        <span className="flex items-center justify-center">
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          {children}
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 };
