@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -64,12 +63,14 @@ const FAQSection = () => {
   return (
     <section 
       ref={sectionRef}
+      id="faq"
       className="px-6 py-24 bg-signaledge-section-alt transition-all duration-1000 opacity-0"
     >
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           Frequently Asked <span className="text-gradient">Questions</span>
         </h2>
+        
         <p className="text-signaledge-gray-light text-center max-w-2xl mx-auto mb-16">
           Get answers to the most common questions about our trading signals
         </p>

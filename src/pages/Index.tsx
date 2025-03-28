@@ -23,6 +23,23 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Use effect to handle anchor links from URL on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Remove the '#' character
+      const id = hash.substring(1);
+      
+      // Wait for page to load completely
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
+  }, []);
+
   return (
     <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Header />

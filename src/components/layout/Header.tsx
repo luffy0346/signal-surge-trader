@@ -27,12 +27,12 @@ const Header = () => {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '#about' },
-    { name: 'How it works', href: '#how-it-works' },
-    { name: 'Performance', href: '#performance' },
+    { name: 'About', href: '/#about' },
+    { name: 'How it works', href: '/#how-it-works' },
+    { name: 'Performance', href: '/#performance' },
     { name: 'Trading Strategies', href: '/trading-strategies' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'FAQ', href: '/#faq' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -61,8 +61,23 @@ const Header = () => {
           {!isMobile && (
             <nav className="hidden md:flex items-center space-x-6 text-sm">
               {navLinks.map((link) => (
-                link.href.startsWith('#') ? (
-                  <a key={link.name} href={link.href} className="nav-link">
+                link.href.startsWith('/#') ? (
+                  <a 
+                    key={link.name} 
+                    href={link.href.substring(1)} 
+                    className="nav-link"
+                    onClick={(e) => {
+                      // Only handle # links when on home page
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        const targetId = link.href.split('#')[1];
+                        const element = document.getElementById(targetId);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }
+                    }}
+                  >
                     {link.name}
                   </a>
                 ) : (
@@ -108,12 +123,25 @@ const Header = () => {
         >
           <nav className="flex flex-col items-center space-y-6 text-base">
             {navLinks.map((link) => (
-              link.href.startsWith('#') ? (
+              link.href.startsWith('/#') ? (
                 <a
                   key={link.name}
-                  href={link.href}
+                  href={link.href.substring(1)}
                   className="nav-link text-lg"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    setMobileMenuOpen(false);
+                    // Only handle # links when on home page
+                    if (window.location.pathname === '/') {
+                      e.preventDefault();
+                      const targetId = link.href.split('#')[1];
+                      const element = document.getElementById(targetId);
+                      if (element) {
+                        setTimeout(() => {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                      }
+                    }
+                  }}
                 >
                   {link.name}
                 </a>

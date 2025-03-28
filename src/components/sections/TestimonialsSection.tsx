@@ -82,6 +82,76 @@ const testimonials: Testimonial[] = [
     role: "Options Strategist",
     content: "SignalEdge provides the edge I need for precise options trading. The signals are consistently reliable and have dramatically improved my success rate.",
     rating: 5
+  },
+  {
+    id: 11,
+    name: "Daniel Morgan",
+    role: "Quantitative Analyst",
+    content: "As someone who develops trading algorithms professionally, I'm impressed by the sophistication of SignalEdge's signals. Their mathematical approach to market analysis is top-tier.",
+    rating: 5
+  },
+  {
+    id: 12,
+    name: "Rebecca Lewis",
+    role: "Futures Trader",
+    content: "Trading futures requires precision and timing. SignalEdge has given me both, allowing me to execute trades with confidence and achieve remarkable consistency.",
+    rating: 4
+  },
+  {
+    id: 13,
+    name: "Victor Nguyen",
+    role: "Technical Analyst",
+    content: "I've been analyzing charts for 15 years, and SignalEdge's signals align perfectly with advanced technical analysis principles while adding valuable insights I would have missed.",
+    rating: 5
+  },
+  {
+    id: 14,
+    name: "Julia Anderson",
+    role: "Hedge Fund Analyst",
+    content: "We've integrated SignalEdge as part of our diversified strategy approach. The signals have consistently outperformed our in-house models in specific market conditions.",
+    rating: 4
+  },
+  {
+    id: 15,
+    name: "Marcus Bennett",
+    role: "Index Trader",
+    content: "Trading major indices requires understanding complex market dynamics. SignalEdge provides clear, actionable signals that have significantly improved my trading performance.",
+    rating: 5
+  },
+  {
+    id: 16,
+    name: "Leila Khoury",
+    role: "Algorithmic Trader",
+    content: "The integration capabilities of SignalEdge with my existing systems are exceptional. Their signals provide an additional layer of validation that enhances my strategy.",
+    rating: 5
+  },
+  {
+    id: 17,
+    name: "Noah Blackwell",
+    role: "Full-time Trader",
+    content: "Since incorporating SignalEdge into my daily routine, my win rate has increased by 22%. The precise entry and exit points have dramatically improved my risk management.",
+    rating: 5
+  },
+  {
+    id: 18,
+    name: "Priya Sharma",
+    role: "Asset Manager",
+    content: "SignalEdge provides the perfect balance of technological sophistication and practical applicability. Their signals integrate seamlessly into our portfolio management approach.",
+    rating: 4
+  },
+  {
+    id: 19,
+    name: "Kevin O'Connor",
+    role: "Proprietary Trader",
+    content: "In the high-pressure environment of prop trading, having reliable signals is crucial. SignalEdge delivers consistently, helping me meet and exceed my performance targets.",
+    rating: 5
+  },
+  {
+    id: 20,
+    name: "Hiroshi Tanaka",
+    role: "Global Macro Trader",
+    content: "Trading across multiple markets requires deep insights and precise timing. SignalEdge provides both, allowing me to capitalize on global market movements with confidence.",
+    rating: 5
   }
 ];
 
@@ -131,6 +201,7 @@ const TestimonialsSection = () => {
   return (
     <section 
       ref={sectionRef}
+      id="testimonials"
       className="px-6 py-24 bg-signaledge-background transition-all duration-1000 opacity-0"
     >
       <div className="section-container">
@@ -151,7 +222,7 @@ const TestimonialsSection = () => {
                   style={{ animationDelay: `${(testimonial.id % testimonialsPerPage) * 100}ms`, animationFillMode: 'both' }}
                 >
                   <Card className="glass-card h-full hover:shadow-glow-lime transition-all duration-300">
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex flex-col h-full">
                       <div className="flex mb-4">
                         {[...Array(5)].map((_, i) => (
                           <Star
@@ -161,9 +232,9 @@ const TestimonialsSection = () => {
                           />
                         ))}
                       </div>
-                      <p className="mb-4 text-signaledge-gray-light italic">"{testimonial.content}"</p>
+                      <p className="mb-6 text-signaledge-gray-light italic flex-grow">"{testimonial.content}"</p>
                       <div className="mt-auto">
-                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="font-semibold text-white">{testimonial.name}</p>
                         <p className="text-sm text-signaledge-gray-light">{testimonial.role}</p>
                       </div>
                     </CardContent>
