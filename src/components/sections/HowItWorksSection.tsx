@@ -69,7 +69,7 @@ const HowItWorksSection = () => {
   }, []);
   
   return (
-    <section className="py-24 px-6 bg-signaledge-section-alt">
+    <section id="how-it-works" className="py-24 px-6 bg-signaledge-section-alt">
       <div className="section-container" ref={sectionRef}>
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           How It <span className="text-gradient">Works</span>

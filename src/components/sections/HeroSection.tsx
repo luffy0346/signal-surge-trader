@@ -33,11 +33,25 @@ const HeroSection = () => {
     <section 
       id="hero"
       ref={sectionRef} 
-      className="min-h-screen flex flex-col justify-center items-center text-center px-6 transition-gpu duration-1000 opacity-0 translate-y-10"
+      className="min-h-screen flex flex-col justify-center items-center text-center px-6 transition-gpu duration-1000 opacity-0 translate-y-10 relative"
       style={{
         background: 'radial-gradient(circle at 50% 50%, rgba(26, 31, 46, 0.7) 0%, rgba(10, 15, 29, 1) 100%)'
       }}
     >
+      {/* Floating Element */}
+      <div className="absolute top-[20%] right-[10%] animate-combined-float z-10">
+        <div className="relative">
+          <div className="absolute inset-0 bg-signaledge-lime opacity-20 blur-md rounded-full"></div>
+          <div className="bg-gradient-to-br from-signaledge-lime to-green-300 p-4 rounded-xl shadow-glow-lime transform rotate-3 flex flex-col items-center">
+            <div className="font-bold text-black text-sm">Breaking News</div>
+            <div className="text-black text-xs mt-1">Real-time Signals!</div>
+            <div className="mt-2 bg-black/20 px-2 py-1 rounded text-[10px] text-black font-medium">
+              +37.8% ROI
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="max-w-4xl mx-auto">
         <div className="relative">
           <div className="animate-subtle-float">

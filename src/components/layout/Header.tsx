@@ -4,12 +4,13 @@ import { Menu, X } from 'lucide-react';
 import Button from '../ui/Button';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +35,32 @@ const Header = () => {
     { name: 'FAQ', href: '/#faq' },
     { name: 'Contact', href: '/contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: { name: string, href: string }) => {
+    // Only handle internal navigation logic for hash links
+    if (link.href.includes('#')) {
+      // If we're not on the home page and link has a hash, navigate to home first
+      if (location.pathname !== '/' && link.href.startsWith('/#')) {
+        // Don't prevent default - let the browser handle navigation to home page
+        return;
+      }
+      
+      // If we're already on the home page
+      if (location.pathname === '/') {
+        e.preventDefault();
+        const targetId = link.href.split('#')[1];
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile menu if open
+          setMobileMenuOpen(false);
+        }
+      }
+    } else {
+      // For non-hash links, just close the mobile menu
+      setMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header 
@@ -61,30 +88,14 @@ const Header = () => {
           {!isMobile && (
             <nav className="hidden md:flex items-center space-x-6 text-sm">
               {navLinks.map((link) => (
-                link.href.startsWith('/#') ? (
-                  <a 
-                    key={link.name} 
-                    href={link.href.substring(1)} 
-                    className="nav-link"
-                    onClick={(e) => {
-                      // Only handle # links when on home page
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        const targetId = link.href.split('#')[1];
-                        const element = document.getElementById(targetId);
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }
-                    }}
-                  >
-                    {link.name}
-                  </a>
-                ) : (
-                  <Link key={link.name} to={link.href} className="nav-link">
-                    {link.name}
-                  </Link>
-                )
+                <Link 
+                  key={link.name} 
+                  to={link.href} 
+                  className="nav-link"
+                  onClick={(e) => handleNavClick(e, link)}
+                >
+                  {link.name}
+                </Link>
               ))}
               <div className="flex items-center ml-4">
                 <a href="#" className="text-sm text-signaledge-gray-light hover:text-white transition-colors mr-4">
@@ -123,38 +134,14 @@ const Header = () => {
         >
           <nav className="flex flex-col items-center space-y-6 text-base">
             {navLinks.map((link) => (
-              link.href.startsWith('/#') ? (
-                <a
-                  key={link.name}
-                  href={link.href.substring(1)}
-                  className="nav-link text-lg"
-                  onClick={(e) => {
-                    setMobileMenuOpen(false);
-                    // Only handle # links when on home page
-                    if (window.location.pathname === '/') {
-                      e.preventDefault();
-                      const targetId = link.href.split('#')[1];
-                      const element = document.getElementById(targetId);
-                      if (element) {
-                        setTimeout(() => {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }, 300);
-                      }
-                    }
-                  }}
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="nav-link text-lg"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              )
+              <Link
+                key={link.name}
+                to={link.href}
+                className="nav-link text-lg"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link.name}
+              </Link>
             ))}
             <div className="flex items-center space-x-4 mt-6 pt-6 border-t border-signaledge-gray-dark w-1/2">
               <a 

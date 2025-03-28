@@ -116,6 +116,14 @@ export default {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-5px)' },
 				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-20px)' },
+				},
+				'bounce-slight': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,6 +133,9 @@ export default {
 				'pulse-glow': 'pulse-glow 2s infinite',
 				'scale-up': 'scale-up 0.3s ease-out',
 				'subtle-float': 'subtle-float 6s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'bounce-slight': 'bounce-slight 2s ease-in-out infinite',
+				'combined-float': 'float 6s ease-in-out infinite, bounce-slight 2s ease-in-out infinite',
 			},
 			backdropFilter: {
 				'none': 'none',

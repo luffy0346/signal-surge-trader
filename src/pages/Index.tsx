@@ -10,9 +10,11 @@ import PricingSection from '@/components/sections/PricingSection';
 import PerformanceSection from '@/components/sections/PerformanceSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FAQSection from '@/components/sections/FAQSection';
+import { useLocation } from 'react-router-dom';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Simulate loading delay for initial animation
@@ -25,7 +27,7 @@ const Index = () => {
 
   // Use effect to handle anchor links from URL on page load
   useEffect(() => {
-    const hash = window.location.hash;
+    const hash = location.hash;
     if (hash) {
       // Remove the '#' character
       const id = hash.substring(1);
@@ -38,7 +40,7 @@ const Index = () => {
         }
       }, 500);
     }
-  }, []);
+  }, [location.hash]);
 
   return (
     <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
