@@ -25,7 +25,7 @@ const tradingStrategies: Strategy[] = [
     period: "1990 - 2023",
     frequency: "Monthly",
     assetClass: "Equities",
-    chartImage: "/placeholder.svg"
+    chartImage: "/lovable-uploads/Momentum_Strategy.png"
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const tradingStrategies: Strategy[] = [
     period: "1995 - 2022",
     frequency: "Monthly",
     assetClass: "Multi-asset",
-    chartImage: "/placeholder.svg"
+    chartImage: "/lovable-uploads/Value_and_Momentum"
   },
   {
     id: 3,
@@ -213,7 +213,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => (
           
           <div className="flex flex-wrap gap-3 mt-2">
             <button className="bg-signaledge-lime hover:bg-signaledge-lime-hover text-black font-medium px-4 py-2 rounded-lg flex items-center transition-colors">
-              <FileText size={18} className="mr-2" /> VIEW PAPER
+              <FileText size={18} className="mr-2" /> VIEW STRATEGY
             </button>
             <button className="border border-signaledge-lime text-signaledge-lime hover:bg-signaledge-lime/10 font-medium px-4 py-2 rounded-lg flex items-center transition-colors">
               <BarChart2 size={18} className="mr-2" /> BACKTEST
