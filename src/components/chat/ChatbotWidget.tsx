@@ -13,7 +13,7 @@ interface Message {
 const initialMessages: Message[] = [
   {
     id: '1',
-    text: 'Hello! I'm SignalEdge AI Assistant. How can I help you with trading signals and strategies today?',
+    text: "Hello! I'm SignalEdge AI Assistant. How can I help you with trading signals and strategies today?",
     isBot: true,
     timestamp: new Date(),
   },
@@ -28,7 +28,7 @@ const predefinedResponses: Record<string, string> = {
   'accuracy': 'Our signals have an average win rate of 58% based on back testing and live market performance. We continuously refine our models to adapt to changing market conditions.',
   'trial': 'Yes, we offer a 7-day free trial for all new users. You can experience the full power of our signals with no commitment required.',
   'cancel': 'You can cancel your subscription anytime from your account dashboard. There are no long-term contracts or cancellation fees.',
-  'refund': 'We offer a 30-day money-back guarantee if you're not satisfied with our service.',
+  'refund': "We offer a 30-day money-back guarantee if you're not satisfied with our service.",
   'supported markets': 'We provide signals for forex, stocks, and commodities across global markets.',
   'contact': 'You can reach our support team at support@signaledge.com or through the Contact page on our website.',
 };
